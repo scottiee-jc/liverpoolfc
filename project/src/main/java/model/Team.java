@@ -1,21 +1,33 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "teams")
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+    @Column
     private String manager;
+    @Column
     private int gamesPlayed;
+    @Column
     private int gamesWon;
+    @Column
     private int gamesLost;
+    @Column
     private int gamesDrawn;
+    @Column
     private int goalsFor;
+    @Column
     private int goalsAgainst;
+    @Column
     private int points;
 
      /*
@@ -28,6 +40,7 @@ public class Team {
         Hibernate will make sure all the orders from the list will be saved to the corresponding table.
      */
 
+    @JsonIgnoreProperties({"team"})
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
 
