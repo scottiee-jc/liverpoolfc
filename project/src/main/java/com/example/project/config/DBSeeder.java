@@ -1,6 +1,5 @@
 package com.example.project.config;
 
-import com.example.project.ProjectApplication;
 import com.example.project.repository.TeamRepository;
 import model.Player;
 import model.Team;
@@ -32,6 +31,7 @@ public class DBSeeder implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Team liverpool = new Team(null, "Jurgen Klopp", 37, 27, 2, 8, 91, 25, 89, null);
+        Team emptyteam = new Team(null, "Pepsi Bottleola", 37, 0, 37, 0, 10, 100, 0, null);
 
         Player p1 = new Player(null, "Mohammed", "Salah", "Forward", LocalDate.of(1992, 6, 15), 30, 13, true, liverpool);
         Player p2 = new Player(null, "Alisson", "Becker", "Goalkeeper", LocalDate.of(1992, 10, 2), 0, 0, true, liverpool);
@@ -44,10 +44,13 @@ public class DBSeeder implements ApplicationRunner {
         Player p9 = new Player(null, "Fabinho", "Tavares", "Midfielder", LocalDate.of(1993, 10, 23), 6, 1, true, liverpool);
         Player p10 = new Player(null, "Luis", "Diaz", "Forward", LocalDate.of(1997, 1, 13), 22, 8, true, liverpool);
         Player p11 = new Player(null, "Andy", "Robertson", "Defender", LocalDate.of(1994, 3, 11), 2, 12, true, liverpool);
+        Player p12 = new Player(null, "noone", "nobody", "Goalkeeper", LocalDate.of(1856, 1, 1), 10, 0, true, emptyteam);
+
 
         liverpool.setPlayers(List.of(p1,p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
+        emptyteam.setPlayers(List.of(p12));
 
-        teamRepository.saveAll(List.of(liverpool));
+        teamRepository.saveAll(List.of(liverpool, emptyteam));
     }
 
 }
