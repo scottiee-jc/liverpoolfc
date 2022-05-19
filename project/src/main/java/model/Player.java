@@ -1,39 +1,50 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-public class Player<T>{
+public class Player{
     @Id
-    @Column(name = "playerId", nullable = false)
-    private Long playerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String firstName;
     private String lastName;
+
+    private String position;
+
+    private LocalDate dateOfBirth;
     private int goals;
     private int assists;
     private boolean isStarting11;
 
+    @ManyToOne
+    private Team team;
+
     public Player(){
     }
 
-    public Player(Long playerId, String firstName, String lastName, int goals, int assists, boolean isStarting11) {
-        this.playerId = playerId;
+    public Player(Long id, String firstName, String lastName, String position, LocalDate dateOfBirth, int goals, int assists, boolean isStarting11, Team team) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.position = position;
+        this.dateOfBirth = dateOfBirth;
         this.goals = goals;
         this.assists = assists;
         this.isStarting11 = isStarting11;
+        this.team = team;
     }
 
-    public Long getPlayerId() {
-        return playerId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -74,5 +85,29 @@ public class Player<T>{
 
     public void setStarting11(boolean starting11) {
         isStarting11 = starting11;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }
