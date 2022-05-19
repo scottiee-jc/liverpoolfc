@@ -5,22 +5,31 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@Table(name = "players")
 public class Player{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
+    @Column
     private String firstName;
+    @Column
     private String lastName;
 
+    @Column
     private String position;
-
+    @Column
     private LocalDate dateOfBirth;
+    @Column(name = "goals")
     private int goals;
+    @Column
     private int assists;
+    @Column
     private boolean isStarting11;
 
     @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
     public Player(){
