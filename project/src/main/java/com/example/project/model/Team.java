@@ -1,6 +1,4 @@
-package model;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.example.project.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +11,8 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
+    @Column
+    private String teamName;
     @Column
     private String manager;
     @Column
@@ -40,15 +40,15 @@ public class Team {
         Hibernate will make sure all the orders from the list will be saved to the corresponding table.
      */
 
-    @JsonIgnoreProperties({"team"})
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
 
     public Team(){
     }
 
-    public Team(Long id, String manager, int gamesPlayed, int gamesWon, int gamesLost, int gamesDrawn, int goalsFor, int goalsAgainst, int points, List<Player> players) {
+    public Team(Long id, String teamName, String manager, int gamesPlayed, int gamesWon, int gamesLost, int gamesDrawn, int goalsFor, int goalsAgainst, int points, List<Player> players) {
         this.id = id;
+        this.teamName = teamName;
         this.manager = manager;
         this.gamesPlayed = gamesPlayed;
         this.gamesWon = gamesWon;
@@ -58,6 +58,14 @@ public class Team {
         this.goalsAgainst = goalsAgainst;
         this.points = points;
         this.players = players;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
     public Long getId() {

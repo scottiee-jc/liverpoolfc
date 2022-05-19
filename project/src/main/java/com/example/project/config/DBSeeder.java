@@ -1,8 +1,8 @@
 package com.example.project.config;
 
 import com.example.project.repository.TeamRepository;
-import model.Player;
-import model.Team;
+import com.example.project.model.Player;
+import com.example.project.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,7 +21,7 @@ import java.util.List;
 public class DBSeeder implements ApplicationRunner {
 
     /*
-           Spring 'glues' DBSeder with the implementation of CustomerRepository
+           Spring 'glues' DBSeder with the implementation of TeamRepository
            provided by the Spring Data Jpa project
         */
 
@@ -30,8 +30,8 @@ public class DBSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Team liverpool = new Team(null, "Jurgen Klopp", 37, 27, 2, 8, 91, 25, 89, null);
-        Team emptyteam = new Team(null, "Pepsi Bottleola", 37, 0, 37, 0, 10, 100, 0, null);
+        Team liverpool = new Team(null, "Liverpool FC","Jurgen Klopp", 37, 27, 2, 8, 91, 25, 89, null);
+        Team emptyteam = new Team(null, "emptyTeam","Pepsi Bottleola", 37, 0, 37, 0, 10, 100, 0, null);
 
         Player p1 = new Player(null, "Mohammed", "Salah", "Forward", LocalDate.of(1992, 6, 15), 30, 13, true, liverpool);
         Player p2 = new Player(null, "Alisson", "Becker", "Goalkeeper", LocalDate.of(1992, 10, 2), 0, 0, true, liverpool);

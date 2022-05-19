@@ -1,11 +1,10 @@
-package model;
+package com.example.project.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
-@Table(name = "players")
 public class Player{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +15,9 @@ public class Player{
     private String firstName;
     @Column
     private String lastName;
-
     @Column
     private String position;
+
     @Column
     private LocalDate dateOfBirth;
     @Column(name = "goals")

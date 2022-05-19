@@ -1,7 +1,7 @@
 package com.example.project.controllers;
 
+import com.example.project.model.Team;
 import com.example.project.repository.TeamRepository;
-import model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,6 @@ public class TeamController {
 
     @Autowired
     TeamRepository teamRepository;
-
 
     @GetMapping
     public ResponseEntity<List<Team>> getAllTeams(){
